@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: www.tlsdemo.net
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: web
+                port:
+                  number: 80
+            path: /

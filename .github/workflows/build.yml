@@ -43,7 +43,7 @@ jobs:
         id:   build_and_push_web
         uses: docker/build-push-action@v5
         with:
-          file: infrastructure/build/Dockerfile.web
+          file: infrastructure/build/final/Dockerfile.web
           push: true
           tags: reallymovinggroup/tls-demo:web-${{ steps.commit.outputs.short }}
 
@@ -51,6 +51,6 @@ jobs:
         id:   build_and_push_app
         uses: docker/build-push-action@v5
         with:
-          file: infrastructure/build/Dockerfile.app
+          file: infrastructure/build/final/Dockerfile.app
           push: true
           tags: reallymovinggroup/tls-demo:app-${{ steps.commit.outputs.short }}
