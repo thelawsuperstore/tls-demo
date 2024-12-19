@@ -15,12 +15,12 @@ imgDatestamp=$(date '+%Y%m%d')
 dockerHubImg="web-base"
 dockerHubImg=$dockerHubAct/$dockerHubRpo:$dockerHubImg-$imgDatestamp
 echo "[INFO] : Will build and push : $dockerHubImg"
-docker build . -f Dockerfile.web --no-cache --tag $dockerHubImg
+docker buildx build . -f Dockerfile.web --no-cache --platform linux/amd64,linux/arm64 --tag $dockerHubImg
 docker push                                       $dockerHubImg
 
 # build and push the base container image for "app"
 dockerHubImg="app-base"
 dockerHubImg=$dockerHubAct/$dockerHubRpo:$dockerHubImg-$imgDatestamp
 echo "[INFO] : Will build and push : $dockerHubImg"
-docker build . -f Dockerfile.app --no-cache --tag $dockerHubImg
+docker buildx build . -f Dockerfile.app --no-cache --platform linux/amd64,linux/arm64 --tag $dockerHubImg
 docker push                                       $dockerHubImg
