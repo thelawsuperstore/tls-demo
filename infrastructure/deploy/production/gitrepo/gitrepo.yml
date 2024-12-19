@@ -76,7 +76,7 @@ spec:
   # - single-path
   # - multiple-paths/*
   paths:
-    - infrastructure/deploy/production
+    - infrastructure/deploy/production/*
 
   # PollingInterval configures how often fleet checks the git repo. The default
   # is 15 seconds.
