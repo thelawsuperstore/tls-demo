@@ -20,6 +20,7 @@ jobs:
         with:
           prefix: ""
 
+      # needed?
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -30,34 +31,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      # needed?
       - name: Extract metadata for the Docker image
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: reallymovinggroup/tls-demo:web-${{ steps.commit.outputs.short }}
-
-      #- name: Build and push the Docker image
-      #  uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-      #  with:
-      #    context: .
-      #    push: true
-      #    tags: reallymovinggroup/tls-demo:web-production
-
-      #- name: Push Tag
-      #  uses: contiamo/retag-push@main
-      #  with:
-      #    source: reallymovinggroup/tls-demo:web-${{ steps.commit.outputs.short }}
-      #    target: reallymovinggroup/tls-demo:web-production
-
-
-      #- name: Search latest semver Image
-      #  uses: tinact/docker.image-retag@master
-      #  with:
-      #    image_name: reallymovinggroup/tls-demo
-      #    image_old_tag: web-${{ steps.commit.outputs.short }}
-      #    image_new_tag: web-production
-      #    registry_username: ${{ secrets.DOCKERHUB_USERNAME }}
-      #    registry_password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Update Tag
         uses: kphrx/docker-buildx-imagetools-action@v0.1.0
@@ -66,8 +45,3 @@ jobs:
             reallymovinggroup/tls-demo:web-${{ steps.commit.outputs.short }}
           tags:
             reallymovinggroup/tls-demo:web-production
-
-      #- name: Update Tag
-      #  with:
-      #    tag_to_replace: web-${{ steps.commit.outputs.short }}
-      #  run: echo "::docker buildx imagetools create -t reallymovinggroup/tls-demo:web-production reallymovinggroup/tls-demo:web-${{ steps.commit.outputs.short }}"
