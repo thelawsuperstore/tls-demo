@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: docker.io/reallymovinggroup/tls-demo:web-f8de263
+          image: docker.io/reallymovinggroup/tls-demo:web-b1b6a3a
           imagePullPolicy: Always
           ports:
             - containerPort: 80
