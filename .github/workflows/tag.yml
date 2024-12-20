@@ -11,6 +11,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    permissions: write-all
 
     steps:
 
@@ -46,13 +47,13 @@ jobs:
           tags:
             reallymovinggroup/tls-demo:web-production
 
-      - name: Create tag
-        uses: actions/github-script@v5
+      - name: Create Tag
+        uses: actions/github-script@v6
         with:
           script: |
             github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: 'refs/tags/production',
-              sha: context.sha
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: 'refs/tags/production',
+                sha: context.sha
             })
