@@ -3,5 +3,5 @@ FROM reallymovinggroup/tls-demo:web-base-20241220
 # Set the working directory
 WORKDIR /var/www/html
 
-#just ensure an index.html is available
-COPY infrastructure/build/final/code/source /var/www/html
+# just ensure an index.html is available
+COPY infrastructure/build/final/web /var/www/html
