@@ -4,7 +4,7 @@ metadata:
   name: web
   labels:
     app: web
-  fingerprint: 12345
+    fingerprint: 12345
 spec:
   replicas: 1
   selector:
