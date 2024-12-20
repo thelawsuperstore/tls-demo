@@ -8,7 +8,7 @@ metadata:
 spec:
   repo: https://github.com/thelawsuperstore/tls-demo
   targetNamespace: production
-  revision: production
+  revision: production-v*
   paths:
     - infrastructure/deploy/production/deployment
     - infrastructure/deploy/production/ingress
