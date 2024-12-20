@@ -4,7 +4,6 @@ metadata:
   name: web
   labels:
     app: web
-    fingerprint: 12345
 spec:
   replicas: 1
   selector:
@@ -14,11 +13,10 @@ spec:
     metadata:
       labels:
         app: web
-        fingerprint: "12349"
     spec:
       containers:
         - name: web
-          image: docker.io/reallymovinggroup/tls-demo:web-d62d9b8
+          image: docker.io/reallymovinggroup/tls-demo:web-d951bdf
           imagePullPolicy: Always
           ports:
             - containerPort: 80
