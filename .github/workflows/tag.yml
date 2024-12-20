@@ -47,13 +47,10 @@ jobs:
           tags:
             reallymovinggroup/tls-demo:web-production
 
-      - name: Create Tag
-        uses: actions/github-script@v6
+      - name: Update the GitHub Tag
+        uses: rickstaa/action-create-tag@v1
+        id: "tag_create"
         with:
-          script: |
-            github.rest.git.createRef({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                ref: 'refs/tags/production',
-                sha: context.sha
-            })
+          tag: "production"
+          tag_exists_error: false
+          message: "Latest release"
