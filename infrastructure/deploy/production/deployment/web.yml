@@ -17,8 +17,8 @@ spec:
       containers:
         - name: web
           image: docker.io/reallymovinggroup/tls-demo:web-production
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
-      imagePullPolicy: Always
       imagePullSecrets:
         - name: docker.io
