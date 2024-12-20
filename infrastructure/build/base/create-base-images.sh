@@ -15,7 +15,7 @@ imgDatestamp=$(date '+%Y%m%d')
 dockerHubImg="web-base"
 dockerHubImg=$dockerHubAct/$dockerHubRpo:$dockerHubImg-$imgDatestamp
 echo "[INFO] : Will build and push : $dockerHubImg"
-docker buildx build . -f Dockerfile.web --no-cache --platform linux/amd64,linux/arm64 --tag $dockerHubImg
+docker buildx build . -f Dockerfile.web --no-cache --platform linux/arm64 --tag $dockerHubImg
 docker push                                       $dockerHubImg
 
 # build and push the base container image for "app" (don't build for linux/amd64 in K3S)
