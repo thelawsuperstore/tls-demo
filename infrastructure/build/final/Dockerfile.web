@@ -4,4 +4,4 @@ FROM reallymovinggroup/tls-demo:web-base-20241220
 WORKDIR /var/www/html
 
 #just ensure an index.html is available
-COPY code/source /var/www/html
+COPY infrastructure/build/final/code/source /var/www/html
