@@ -43,8 +43,18 @@ jobs:
       #    push: true
       #    tags: reallymovinggroup/tls-demo:web-production
 
-      - name: Push Tag
-        uses: contiamo/retag-push@main
+      #- name: Push Tag
+      #  uses: contiamo/retag-push@main
+      #  with:
+      #    source: reallymovinggroup/tls-demo:web-${{ steps.commit.outputs.short }}
+      #    target: reallymovinggroup/tls-demo:web-production
+
+
+      - name: Search latest semver Image
+        uses: tinact/docker.image-retag@master
         with:
-          source: reallymovinggroup/tls-demo:web-production
-          target: reallymovinggroup/tls-demo:web-${{ steps.commit.outputs.short }}
+          image_name: reallymovinggroup/tls-demo:web-${{ steps.commit.outputs.short }}
+          image_old_tag: reallymovinggroup/tls-demo:web-${{ steps.commit.outputs.short }}
+          image_new_tag: reallymovinggroup/tls-demo:web-production
+          registry_username: ${{ secrets.DOCKERHUB_USERNAME }}
+          registry_password: ${{ secrets.DOCKERHUB_TOKEN }}
