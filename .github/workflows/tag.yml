@@ -38,10 +38,21 @@ jobs:
         with:
           images: reallymovinggroup/tls-demo:web-${{ steps.commit.outputs.short }}
 
-      - name: Update Tag
+      - name: Update the DockerHub Image Tag
         uses: kphrx/docker-buildx-imagetools-action@v0.1.0
         with:
           sources:
             reallymovinggroup/tls-demo:web-${{ steps.commit.outputs.short }}
           tags:
             reallymovinggroup/tls-demo:web-production
+
+      - name: Create tag
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/production',
+              sha: context.sha
+            })
