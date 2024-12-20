@@ -10,4 +10,6 @@ spec:
   targetNamespace: production
   branch: production
   paths:
-    - infrastructure/deploy
+    - infrastructure/deploy/deployment
+    - infrastructure/deploy/ingress
+    - infrastructure/deploy/service
