@@ -36,9 +36,15 @@ jobs:
         with:
           images: reallymovinggroup/tls-demo:web-${{ steps.commit.outputs.short }}
 
-      - name: Build and push the Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+      #- name: Build and push the Docker image
+      #  uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+      #  with:
+      #    context: .
+      #    push: true
+      #    tags: reallymovinggroup/tls-demo:web-production
+
+      - name: Push Tag
+        uses: contiamo/retag-push@main
         with:
-          context: .
-          push: true
-          tags: reallymovinggroup/tls-demo:web-production
+          source: reallymovinggroup/tls-demo:web-${{ steps.commit.outputs.short }}
+          target: reallymovinggroup/tls-demo:web-production
