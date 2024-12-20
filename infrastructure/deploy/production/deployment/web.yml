@@ -14,7 +14,7 @@ spec:
     metadata:
       labels:
         app: web
-        fingerprint: "12347"
+        fingerprint: "12348"
     spec:
       containers:
         - name: web
